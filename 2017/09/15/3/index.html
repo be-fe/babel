@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>node里面NODE_ENV有什么用 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="可以用来设置环境变量（默认值为development）。一般我们通过检查这个值来分别对开发环境和生产环境下做不同的处理。可以在命令行中通过下面的方式设置这个值：">
+<meta property="og:type" content="article">
+<meta property="og:title" content="node里面NODE_ENV有什么用">
+<meta property="og:url" content="http://yoursite.com/2017/09/15/3/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="可以用来设置环境变量（默认值为development）。一般我们通过检查这个值来分别对开发环境和生产环境下做不同的处理。可以在命令行中通过下面的方式设置这个值：">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-09-15T07:13:27.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="node里面NODE_ENV有什么用">
+<meta name="twitter:description" content="可以用来设置环境变量（默认值为development）。一般我们通过检查这个值来分别对开发环境和生产环境下做不同的处理。可以在命令行中通过下面的方式设置这个值：">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/babel/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/babel/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/babel/">Home</a>
+        
+          <a class="main-nav-link" href="/babel/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-3" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/babel/2017/09/15/3/" class="article-date">
+  <time datetime="2017-09-15T06:01:25.000Z" itemprop="datePublished">2017-09-15</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      node里面NODE_ENV有什么用
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>可以用来设置环境变量（默认值为development）。<br>一般我们通过检查这个值来分别对开发环境和生产环境下做不同的处理。可以在命令行中通过下面的方式设置这个值：<br><a id="more"></a><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">linux &amp; mac: <span class="built_in">export</span> NODE_ENV=production</div><div class="line">windows: <span class="built_in">set</span> NODE_ENV=production</div></pre></td></tr></table></figure></p>
+<p>demo如下</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//package.json</span></div><div class="line">&#123;</div><div class="line">    <span class="string">"name"</span>: <span class="string">"npmtest"</span>,</div><div class="line">    <span class="string">"version"</span>: <span class="string">"1.0.0"</span>,</div><div class="line">    <span class="string">"description"</span>: <span class="string">""</span>,</div><div class="line">    <span class="string">"main"</span>: <span class="string">"app.js"</span>,</div><div class="line">    <span class="string">"scripts"</span>: &#123;</div><div class="line">        <span class="string">"test"</span>: <span class="string">"echo \"Error: no test specified\" &amp;&amp; exit 1"</span>,</div><div class="line">        <span class="string">"start"</span>: <span class="string">"better-npm-run start"</span></div><div class="line">    &#125;,</div><div class="line">    <span class="string">"betterScripts"</span>: &#123;</div><div class="line">        <span class="string">"start"</span>: &#123;</div><div class="line">            <span class="string">"command"</span>: <span class="string">"node app.js"</span>,</div><div class="line">            <span class="string">"env"</span>: &#123;</div><div class="line">                <span class="string">"NODE_ENV"</span>: <span class="string">"dev"</span></div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;,</div><div class="line">    <span class="string">"author"</span>: <span class="string">""</span>,</div><div class="line">    <span class="string">"license"</span>: <span class="string">"ISC"</span></div><div class="line">&#125;</div><div class="line"><span class="comment">//app.js</span></div><div class="line"><span class="keyword">if</span> (process.env.NODE_ENV === <span class="string">'product'</span>) &#123;</div><div class="line">    <span class="comment">// just for production code</span></div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'production'</span>);</div><div class="line">&#125;<span class="keyword">else</span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'dev'</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/09/15/3/" data-id="cj7ljsyli0003usxlbld0m7t2" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/babel/2017/09/14/1/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">资源检索</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/babel/tags/工作效率/">工作效率</a></li><li class="tag-list-item"><a class="tag-list-link" href="/babel/tags/资源/">资源</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/babel/tags/工作效率/" style="font-size: 10px;">工作效率</a> <a href="/babel/tags/资源/" style="font-size: 10px;">资源</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/babel/archives/2017/09/">September 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/babel/2017/09/15/3/">node里面NODE_ENV有什么用</a>
+          </li>
+        
+          <li>
+            <a href="/babel/2017/09/14/1/">资源检索</a>
+          </li>
+        
+          <li>
+            <a href="/babel/2017/09/14/2/">提高工作效率的cli工具</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 Babel<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/babel/" class="mobile-nav-link">Home</a>
+  
+    <a href="/babel/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/babel/fancybox/jquery.fancybox.css">
+  <script src="/babel/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/babel/js/script.js"></script>
+
+  </div>
+</body>
+</html>
