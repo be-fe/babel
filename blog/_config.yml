@@ -72,13 +72,12 @@ pagination_dir: page
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: next
+theme: landscape
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
-  type:
-
-duoshuo:
-  enable: true
-  shortname: your-duoshuo-shortname
+  type: git
+  repo: git@github.com:be-fe/babel.git
+  branch: gh-pages
+  message: deploy blog
